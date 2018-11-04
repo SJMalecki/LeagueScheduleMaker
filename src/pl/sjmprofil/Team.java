@@ -27,7 +27,26 @@ public class Team {
             return true;
         }
     }
-    
+
+    public void matchResult(Team opponent, int awayTeamScore, int homeTeamScore){
+        String message;
+        if(homeTeamScore > awayTeamScore){
+            won++;
+            message = " won with ";
+        }else if(homeTeamScore < awayTeamScore){
+            lost++;
+            message = " lost with ";
+        }else{
+            message =" draw with ";
+        }
+        gamesPlayed++;
+        if(opponent != null){
+            System.out.println(teamName + message + opponent.getTeamName() + " "
+                    + homeTeamScore + ":" + awayTeamScore);
+            opponent.matchResult(null, homeTeamScore, awayTeamScore);
+        }
+    }
+
 
     public void printSquad(){
         if(!squad.isEmpty()) {
@@ -40,6 +59,7 @@ public class Team {
         }
     }
 
-
-
+    public String getTeamName() {
+        return teamName;
+    }
 }
