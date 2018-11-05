@@ -37,6 +37,7 @@ public class Team {
             lost++;
             message = " lost with ";
         }else{
+            tied++;
             message =" draw with ";
         }
         gamesPlayed++;
